@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}Form{% endblock %}
+
+{% block content %}
+<div class="row align-content-center">
+    <h1 class="display-3">{{title}}</h1>
+
+    <form action="/story" class="form-inline my-5">
+        <label for="{{name}}" class="input-group-prepend">
+            {{name}}</label>
+        {% for name in prompts %}
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <div class="input-group-text">{{name}}</div>
+                <input type="text" name="{{name}}" class="form-control mr-4" />
+            </div>
+        </div>
+        <br>
+        <br>
+        {% endfor %}
+
+        <input type="hidden" name="story_choice" value="{{ story_choice }}">
+        <button class="btn btn-sm btn-primary">Submit!</button>
+    </form>
+</div>
+{% endblock %}

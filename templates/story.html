@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block title %}Story{% endblock %}
+
+{% block content %}
+
+<h1 class="display-3">Madlibs Story</h1>
+<p class="display-5">
+    {{final_story}}
+</p>
+
+<a class="btn btn-primary" href="/home">New story</a>
+
+{% endblock %}

@@ -3,24 +3,25 @@
 
 class Story:
     """Madlibs story.
-
     To  make a story, pass a list of prompts, and the text
     of the template.
+    #     >>> s = Story(
+    #     ...     "Novel",
+    #     ...     "A Novel Story",
+    #     ...     ["noun", "verb"],
+    #     ...     "I love to {verb} a good {noun}.")
+    # To generate text from a story, pass in a dictionary-like thing
+    # of {prompt: answer, promp:answer):
+    #     >>> ans = {"verb": "eat", "noun": "mango"}
+    #     >>> s.generate(ans)
+    #     'I love to eat a good mango.'
+    #"""
 
-        >>> s = Story(["noun", "verb"],
-        ...     "I love to {verb} a good {noun}.")
-
-    To generate text from a story, pass in a dictionary-like thing
-    of {prompt: answer, promp:answer):
-
-        >>> ans = {"verb": "eat", "noun": "mango"}
-        >>> s.generate(ans)
-        'I love to eat a good mango.'
-    """
-
-    def __init__(self, words, text):
+    def __init__(self, identifier, title, words, text):
         """Create story with words and template text."""
 
+        self.id = identifier
+        self.title = title
         self.prompts = words
         self.template = text
 
@@ -38,8 +39,19 @@ class Story:
 # Here's a story to get you started
 
 
-story = Story(
+story1 = Story(
+    "tale",
+    "A Tale of a Place",
     ["place", "noun", "verb", "adjective", "plural_noun"],
     """Once upon a time in a long-ago {place}, there lived a
        large {adjective} {noun}. It loved to {verb} {plural_noun}.""",
 )
+
+story2 = Story(
+    "gossip",
+    "Don't Eat Too Much",
+    ["place", "person"],
+    """After going to {place} for dinner, {person} was absolutely famished!""",
+)
+
+stories = {s.id: s for s in [story1, story2]}
